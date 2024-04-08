@@ -10,7 +10,7 @@ class Commend extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $with = ['user'];
+//    protected $with = ['user'];
     protected $fillable = [
         'user_id',
         'post_id',

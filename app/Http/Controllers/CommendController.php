@@ -12,8 +12,14 @@ class CommendController extends Controller
      */
     public function index()
     {
-        $commends = Commend::with('post')->get() ;
-        return response()->json($commends);
+
+        $commends = Commend::all() ;
+        $response = [
+            'status' => 'success',
+            'message' => 'data load success',
+            'data' => $commends,
+        ];
+        return response()->json($response, 200);
     }
 
     /**

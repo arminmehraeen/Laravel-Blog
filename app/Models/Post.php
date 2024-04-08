@@ -10,7 +10,7 @@ class Post extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $with = ['user','commends'];
+//    protected $with = ['user','commends'];
 
     protected $fillable = [
         'title',

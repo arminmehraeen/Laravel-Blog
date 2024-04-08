@@ -12,8 +12,13 @@ class UserController extends Controller
      */
     public function index(): \Illuminate\Http\JsonResponse
     {
-        $users = User::with('posts')->get() ;
-        return response()->json($users);
+        $users = User::all() ;
+        $response = [
+            'status' => 'success',
+            'message' => 'data load success',
+            'data' => $users,
+        ];
+        return response()->json($response, 200);
     }
 
     /**
