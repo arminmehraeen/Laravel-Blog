@@ -13,13 +13,13 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::post('/login', 'login');
 });
 
-
+Route::resource('posts',\App\Http\Controllers\PostController::class);
 
 Route::middleware('auth:sanctum')->group( function () {
     Route::post('/logout', [LoginRegisterController::class, 'logout']);
 
     Route::post('/upload',[\App\Http\Controllers\UploadController::class,'store']) ;
-    Route::resource('posts',\App\Http\Controllers\PostController::class);
+
     Route::resource('commends',\App\Http\Controllers\CommendController::class);
     Route::resource('users',\App\Http\Controllers\UserController::class);
 });
