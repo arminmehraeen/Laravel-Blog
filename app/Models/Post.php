@@ -10,22 +10,13 @@ class Post extends Model
 {
     use HasFactory,SoftDeletes;
 
-//    protected $with = ['user','commends'];
+    protected $with = ['user'];
 
     protected $fillable = [
         'title',
         'body',
         'user_id'
     ];
-
-//    /**
-//     * The attributes that should be hidden for serialization.
-//     *
-//     * @var array<int, string>
-//     */
-//    protected $hidden = [
-//        'user_id',
-//    ];
 
     protected $casts = [
         'status' => 'boolean',

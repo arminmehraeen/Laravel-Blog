@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Mockery\Exception;
@@ -85,6 +86,11 @@ class LoginRegisterController extends Controller
         return response()->json($response, 200);
     }
 
+
+    public function user(): \Illuminate\Contracts\Auth\Authenticatable
+    {
+        return Auth::user();
+    }
 
     public function logout(Request $request): \Illuminate\Http\JsonResponse
     {
