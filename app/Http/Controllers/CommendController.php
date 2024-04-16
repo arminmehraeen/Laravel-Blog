@@ -10,11 +10,23 @@ use Illuminate\Support\Facades\Validator;
 
 class CommendController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->exists('post_id') ) {
+            $data = Commend::where('post_id',$request->post_id)->latest()->get() ;
+            $response = [
+                'status' => 'success',
+                'message' => 'data load success',
+                'data' => $data,
+            ];
+            return response()->json($response, 200);
+        }
+
         $data = Commend::all() ;
         $response = [
             'status' => 'success',
