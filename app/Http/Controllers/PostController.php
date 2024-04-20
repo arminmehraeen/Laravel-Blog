@@ -31,6 +31,7 @@ class PostController extends Controller
      */
     public function store(Request $request): \Illuminate\Http\JsonResponse
     {
+
         $validate = Validator::make($request->all(), [
             'title' => 'required|string|max:250',
             'body' => 'required|string|',
@@ -44,8 +45,6 @@ class PostController extends Controller
                 'data' => $validate->errors(),
             ], 403);
         }
-
-
 
         $post = new Post;
         $post->user_id = Auth::user()->id;
