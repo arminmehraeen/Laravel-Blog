@@ -18,7 +18,8 @@ class LoginRegisterController extends Controller
         $validate = Validator::make($request->all(), [
             'name' => 'required|string|max:250',
             'email' => 'required|string|email:rfc,dns|max:250|unique:users,email',
-            'password' => 'required|string|min:8|confirmed'
+            'password' => 'required|string|min:8|confirmed',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if($validate->fails()){
@@ -35,6 +36,15 @@ class LoginRegisterController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
+        // Handle image upload and set image attribute
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->store();
+            $request->image->move(public_path('users'), $imageName);
+            $imageUrl = 'users/' . $imageName;
+            $user->image = $imageUrl ;
+            $user->save() ;
+        }
+
         $data['token'] = $user->createToken($request->email)->plainTextToken;
         $data['user'] = $user;
 
@@ -46,7 +56,6 @@ class LoginRegisterController extends Controller
 
         return response()->json($response, 201);
     }
-
 
     public function login(Request $request): \Illuminate\Http\JsonResponse
     {
