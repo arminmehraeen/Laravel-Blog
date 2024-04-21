@@ -18,7 +18,10 @@ class CommendController extends Controller
     public function index(Request $request)
     {
         if($request->exists('post_id') ) {
-            $data = Commend::where('post_id',$request->post_id)->latest()->get() ;
+            $data = Commend::where([
+                ['post_id', '=', $request->post_id],
+                ['commend_id', '=', null],
+            ])->latest()->get() ;
             $response = [
                 'status' => 'success',
                 'message' => 'data load success',
@@ -44,6 +47,7 @@ class CommendController extends Controller
         $validate = Validator::make($request->all(), [
             'message' => 'required|string|max:250',
             'post_id' => 'required|int|',
+            'commend_id' => 'int',
         ]);
 
         if($validate->fails()){
@@ -59,6 +63,9 @@ class CommendController extends Controller
         $object->user_id = Auth::user()->id;
         $object->message = $request->message;
         $object->post_id = $request->post_id;
+        if($request->exists('commend_id')) {
+            $object->commend_id = $request->commend_id;
+        }
 
 
         $object->save();

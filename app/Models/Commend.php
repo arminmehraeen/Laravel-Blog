@@ -10,7 +10,7 @@ class Commend extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $with = ['user'];
+    protected $with = ['user','children'];
 
     protected $fillable = [
         'user_id',
@@ -18,7 +18,17 @@ class Commend extends Model
         'message',
     ];
 
-    public function post(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function parent()
+    {
+        return $this->belongsTo($this::class, 'commend_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany($this::class, 'commend_id');
+
+    }
+        public function post(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Post::class);
     }
