@@ -91,8 +91,10 @@ php artisan serve
 
 To demonstrate the usage of this API service, a Flutter application has been developed as a note-taking app. This Flutter app seamlessly integrates with the provided Laravel-based API endpoints to offer users the ability to create, read, update, and delete notes. Additionally, users can add comments to individual notes, providing a collaborative environment for note management. The Flutter app showcases the versatility and ease of integration with the API service, providing a real-world example of how developers can leverage the Laravel back-end to power their mobile applications. Explore the codebase of the Flutter app to see how it communicates with the Laravel API and handles various API requests and responses.
 
-link fo project: https://github.com/arminmehraeen/NoteBin
-
+link fo project: 
+```
+https://github.com/arminmehraeen/NoteBin
+```
 ## Routes
 
 ### Authentication
