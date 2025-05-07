@@ -1,5 +1,48 @@
-# Laravel Blog
-A RESTful API service built on Laravel for managing posts, comments, and user authentication.
+# Laravel Blog API
+
+A modern RESTful API service built with Laravel for managing blog posts, comments, and user authentication. This project serves as a backend for the [NoteBin](https://github.com/arminmehraeen/NoteBin) Flutter application.
+
+## Features
+
+- 🔐 User Authentication (Register/Login)
+- 📝 Blog Post Management (CRUD)
+- 💬 Comment System
+- 📤 File Upload Support
+- 🔒 Secure API Endpoints
+
+## Quick Start
+
+1. Clone the repository
+2. Run `composer install`
+3. Copy `.env.example` to `.env` and configure
+4. Run `php artisan key:generate`
+5. Run `php artisan migrate`
+6. Start server with `php artisan serve`
+
+## API Documentation
+
+### Authentication
+- POST `/register` - User registration
+- POST `/login` - User login
+- POST `/logout` - User logout
+
+### Posts
+- GET `/posts` - List all posts
+- POST `/posts` - Create post
+- GET `/posts/{id}` - Get post
+- PUT `/posts/{id}` - Update post
+- DELETE `/posts/{id}` - Delete post
+
+### Comments
+- GET `/comments` - List all comments
+- POST `/comments` - Create comment
+- GET `/comments/{id}` - Get comment
+- PUT `/comments/{id}` - Update comment
+- DELETE `/comments/{id}` - Delete comment
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 <p align="center">
   <a href="https://laravel.com" target="_blank">
@@ -21,7 +64,7 @@ This project aims to provide a robust RESTful API service using the Laravel fram
 
 ### Step 1: Install Required Software
 
-Before you begin, ensure that you have the necessary software installed on your machine. You’ll need:
+Before you begin, ensure that you have the necessary software installed on your machine. You'll need:
 
 - PHP
 - Composer
